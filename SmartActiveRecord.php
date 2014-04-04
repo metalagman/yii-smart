@@ -11,7 +11,7 @@
  *
  * @property boolean isPosted
  */
-class SmartActiveRecord extends CActiveRecord
+abstract class SmartActiveRecord extends CActiveRecord
 {
     /**
      * Returns class name in static calls.
