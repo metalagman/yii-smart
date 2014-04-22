@@ -166,9 +166,10 @@ abstract class SmartActiveRecord extends CActiveRecord
         $constants = static::getConstants($prefix);
 
         $result = [];
-        foreach ($constants as $value) {
-            $list[$value] = Yii::t('app', $class . '_' . $prefix . '_' . $value);
+        foreach ($constants as $name=>$value) {
+            $result[$value] = Yii::t('app', $class . '_' . $name);
         }
+
         return $result;
     }
 }
