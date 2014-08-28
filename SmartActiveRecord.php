@@ -98,7 +98,7 @@ abstract class SmartActiveRecord extends CActiveRecord
 
     /**
      * Loads model attributes from POST data
-     *
+     * @deprecated
      * @param array|null $attributes
      */
     public function loadPostData($attributes = null)
@@ -110,6 +110,24 @@ abstract class SmartActiveRecord extends CActiveRecord
                 $postData = array_intersect_key($postData, array_flip($attributes));
             $this->setAttributes($postData);
         }
+    }
+
+    /**
+     * @param array $data
+     * @param array $attributes
+     * @return bool
+     */
+    public function load($data, $attributes)
+    {
+        $class = static::className();
+        if (isset($data[$class])) {
+            $attributesData = $data[$class];
+            if (is_array($attributes))
+                $attributesData = array_intersect_key($attributesData, array_flip($attributes));
+            $this->setAttributes($attributesData);
+            return true;
+        }
+        return false;
     }
 
     /**

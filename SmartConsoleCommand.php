@@ -5,5 +5,5 @@
 
 class SmartConsoleCommand extends CConsoleCommand
 {
-    
+
 }
