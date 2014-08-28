@@ -117,7 +117,7 @@ abstract class SmartActiveRecord extends CActiveRecord
      * @param array $attributes
      * @return bool
      */
-    public function load($data, $attributes)
+    public function load($data, $attributes = null)
     {
         $class = static::className();
         if (isset($data[$class])) {
