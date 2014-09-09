@@ -65,4 +65,22 @@ abstract class SmartFormModel extends CFormModel
             $this->setAttributes($postData);
         }
     }
+
+    /**
+     * @param array $data
+     * @param array $attributes
+     * @return bool
+     */
+    public function load($data, $attributes = null)
+    {
+        $class = static::className();
+        if (isset($data[$class])) {
+            $attributesData = $data[$class];
+            if (is_array($attributes))
+                $attributesData = array_intersect_key($attributesData, array_flip($attributes));
+            $this->setAttributes($attributesData);
+            return true;
+        }
+        return false;
+    }
 }
